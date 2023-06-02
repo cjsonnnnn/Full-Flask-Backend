@@ -1,11 +1,14 @@
 from flask import Blueprint
 from .. import app
 
+
+# define blueprint
+main_bp = Blueprint('main', __name__)
+
+
 # import modules
 from . import endpoints
-from . import models
-from . import schema
 
 
-main_bp = Blueprint('main', __name__)
+# register blueprint
 app.register_blueprint(main_bp)

@@ -7,7 +7,7 @@ import bcrypt
 from flask import request, jsonify
 from .. import db
 from . import token_required, blacklist, generate_token, auth_bp
-from .models import Sales
+from ..models import Sales
 
 
 # to regist a new sales

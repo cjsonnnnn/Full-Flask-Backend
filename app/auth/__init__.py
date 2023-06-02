@@ -4,11 +4,7 @@ from functools import wraps
 from flask import request, jsonify, Blueprint
 import jwt
 from .. import app
-
-# import modules
-from . import endpoints
-from . import models
-from . import schema
+from ..models import Sales
 
 
 
@@ -23,7 +19,7 @@ blacklist = set()           # Blacklist to store logged out tokens
 # sales stuffs
 @login_manager.user_loader
 def load_user(username):
-    return models.Sales.query.filter_by(username=username).first()
+    return Sales.query.filter_by(username=username).first()
 
 
 # to validate token
@@ -43,7 +39,7 @@ def token_required(f):
 
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-            current_user = models.Sales.query.filter_by(username=data['username']).first()
+            current_user = Sales.query.filter_by(username=data['username']).first()
         except:
             return jsonify({'message' : 'Token invalid!'}), 401
 
@@ -61,6 +57,13 @@ def generate_token(username):
     )
 
 
-# register blueprint
+# define blueprint
 auth_bp = Blueprint('auth', __name__)
+
+
+# import modules
+from . import endpoints
+
+
+# register blueprint
 app.register_blueprint(auth_bp)

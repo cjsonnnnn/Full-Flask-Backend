@@ -34,4 +34,4 @@ def run_database():
         create_database()       # to define all orm database
         db.create_all()         # insert those to db, which is mysql
         create_triggers()       # insert triggers to db
-        initialize_dummy.initiinitializeDummy()       # initialize some data to the db
+        initialize_dummy.initializeDummy()       # initialize some data to the db

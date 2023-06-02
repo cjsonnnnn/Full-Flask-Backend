@@ -1,5 +1,11 @@
-from .models import Customer, Product, Category, Order, DetailCart
-from .. import ma
+from .models import *
+from . import ma
+
+
+class SalesSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Sales
+        include_fk = True
 
 
 class CustomerSchema(ma.SQLAlchemyAutoSchema):

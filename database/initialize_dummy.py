@@ -1,6 +1,5 @@
 import bcrypt
-from app.auth.models import Sales
-from app.main.models import *
+from app.models import *
 
 
 def initializeDummy():
